@@ -1,5 +1,21 @@
 <?php
 include 'conexion.php';
+require 'vendor/autoload.php'; // Asegúrate de que esté instalada la SDK
+
+use Cloudinary\Configuration\Configuration;
+use Cloudinary\Api\Upload\UploadApi;
+
+// Configurar Cloudinary (usa tus datos reales)
+Configuration::instance([
+  'cloud' => [
+    'cloud_name' => 'dpebmoavx',
+    'api_key' => '292534632943836',
+    'api_secret' => 'nQ_x4hsxKHSu2FZzek4wpZeUgOg'
+  ],
+  'url' => [
+    'secure' => true
+  ]
+]);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $titulo = $_POST['titulo'];
@@ -9,20 +25,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $resena = $_POST['resena'];
   $enlace_trailer = $_POST['enlace_trailer'];
 
-  // Subida de imagen
   $imagen_url = null;
-  if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
-    $nombre_final = time() . '_' . basename($_FILES['imagen']['name']);
-    $ruta_destino = 'imagenes/' . $nombre_final;
 
-    if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta_destino)) {
-      $imagen_url = $ruta_destino;
+  // Subida a Cloudinary
+  if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
+    try {
+      $resultado = (new UploadApi())->upload($_FILES['imagen']['tmp_name'], [
+        'folder' => 'cinecritic' // Puedes cambiar el nombre de la carpeta en Cloudinary
+      ]);
+      $imagen_url = $resultado['secure_url']; // URL segura de la imagen subida
+    } catch (Exception $e) {
+      echo "Error al subir imagen a Cloudinary: " . $e->getMessage();
+      exit;
     }
   }
 
-  // Insertar en la BD
+  // Guardar en base de datos
   $stmt = $conn->prepare("INSERT INTO peliculas (titulo, genero, calificacion, fecha_lanzamiento, resena, enlace_trailer, imagen_url)
-                        VALUES (:titulo, :genero, :calificacion, :fecha_lanzamiento, :resena, :enlace_trailer, :imagen_url)");
+                          VALUES (:titulo, :genero, :calificacion, :fecha_lanzamiento, :resena, :enlace_trailer, :imagen_url)");
 
   $stmt->execute([
     'titulo' => $titulo,
@@ -33,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'enlace_trailer' => $enlace_trailer,
     'imagen_url' => $imagen_url
   ]);
-
 
   header("Location: index.php");
   exit;
