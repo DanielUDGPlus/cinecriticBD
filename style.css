@@ -1,0 +1,434 @@
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('fondo_sitio.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.642);
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Header y menú */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  color: white;
+  padding: 40px 20px;
+  border-radius: 10px 10px 0 0;
+}
+
+#logo {
+  height: 150px;
+  position: absolute;
+  top: -10px;
+  left: 140px;
+  z-index: 1;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu nav ul {
+  list-style: none;
+  display: flex;
+  margin: -15px;
+  padding: 0;
+  align-items: center;
+}
+
+.menu-links {
+  margin-left: 250px;
+}
+
+.menu-links ul {
+  display: flex;
+  gap: -5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.menu-links ul li a,
+.menu nav ul li a {
+  display: inline-block;
+  padding: 16px;
+  margin-top: -13.5px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.menu-links ul li a:hover,
+.menu nav ul li a:hover {
+  color: #000000;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+/* Main */
+main {
+  padding: 20px 0;
+}
+
+main a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+/* Contenedor de tarjetas */
+.juegos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+
+
+.juego-card {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  width: 90%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+.juego-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.juego-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+
+.juego-card a:hover {
+  background-color: #0056b3;
+}
+
+.juego-card h3 {
+  margin-top: 0;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  margin-top: 20px;
+}
+
+table a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+table a:hover {
+  text-decoration: underline;
+}
+
+/* Botón */
+.boton-volver {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.boton-volver:hover {
+  background-color: #444;
+}
+
+/* Centrar tarjeta detalle */
+.juegos-container.detalle-juego {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+.detalle-juego .juego-card {
+  margin-top: -1rem;
+}
+
+/* Tabla estilo tarjeta */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-top: 1rem;
+}
+
+thead th {
+  background-color: #222;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+tbody tr {
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+tbody tr:hover {
+  transform: scale(1.01);
+}
+
+tbody td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+tbody td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+tbody td:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Formulario de edición */
+.formulario-edicion {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background-color: #ffffffcb;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.formulario-edicion label {
+  font-weight: bold;
+}
+
+.formulario-edicion input[type="text"],
+.formulario-edicion input[type="number"],
+.formulario-edicion input[type="date"],
+.formulario-edicion textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formulario-edicion textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formulario-edicion button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario-edicion button:hover {
+  background-color: #0056b3;
+}
+
+/* Formulario Agregar moderno */
+.formulario-pelicula input,
+.formulario-pelicula textarea,
+.formulario-pelicula button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.formulario-pelicula label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+.formulario-pelicula button {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.formulario-pelicula button:hover {
+  background-color: #444;
+}
+
+/* ================== RESPONSIVE =================== */
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  #logo {
+    position: static;
+    margin-bottom: 20px;
+    height: 100px;
+  }
+
+  .menu-links {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .menu-links ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .menu-links ul li {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .menu-links ul li a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .juegos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .juego-card {
+    width: 100%;
+  }
+
+  .container {
+    padding: 10px;
+  }
+}
+
+/* ====== HAMBURGUESA ====== */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  z-index: 100;
+}
+
+/* Estilos para móviles */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  #logo {
+    content: url('logo_pestana.png');
+    height: 60px;
+    margin-bottom: 0;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-links {
+    display: none;
+    width: 100%;
+  }
+
+  .menu-links.show {
+    display: block;
+  }
+
+  .menu-links ul {
+  flex-direction: column;
+  background-color: #333;
+  padding: 10px 30px; /* <-- Aumenta o reduce este valor según el margen lateral que quieras */
+  border-radius: 8px;
+  max-width: 500px; /* <-- Controla el ancho total del menú desplegado */
+  }
+
+  .menu-links ul li {
+    width: 100%;
+  }
+
+  .menu-links ul li a {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 12px 20px; /* <-- Aquí defines el padding interno del botón */
+  border-radius: 6px;
+  }
+
+.menu-links ul li a:hover {
+  color: #000000;
+  background-color: #ffffff;
+  /*margin: 0 auto; /* Centra el resaltado blanco */
+  max-width: 400px; /* <-- Limita el ancho del fondo blanco del hover */
+  border-radius: 6px;
+  }
+}
