@@ -3,6 +3,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agregar Película - Cinecritic</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="logo_pestana.png" type="image/png">
